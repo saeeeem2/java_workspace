@@ -1,0 +1,58 @@
+package day06;
+
+import java.util.Scanner;
+
+public class Method03 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		/* 메서드를 활용한 계산기 작성
+		 * 연산자는 + _ * / %만 허용
+		 * 두 수와 연산자를 입력받아서 메서드를 활용하여 연산 
+		 * ex) 3+4=7 */
+		
+		Scanner scan=new Scanner(System.in);
+		System.out.println("숫자 두 개와 연산자를 입력해주세요");
+		int num1=scan.nextInt();
+		int num2=scan.nextInt();
+		String s=scan.next();
+		
+		if(s=="+") {
+			int add=add(num1,num2);
+			System.out.println(add);
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		scan.close();
+
+	}
+	public static int add(int num1, int num2) {
+		int result=num1+num2;
+		return result;
+	}
+	public static int sub(int num1, int num2) {
+		int result=num1-num2;
+		return result;
+	}
+	public static void mul(int num1, int num2) {
+		System.out.println(num1*num2);
+	}
+	public static double div(int num1,int num2) {
+		System.out.println((double)num1/num2);
+		return (double)num1/num2;
+	}
+	
+	public static void rem(int num1, int num2) {
+		System.out.println(num1%num2);
+	}
+	
+
+}

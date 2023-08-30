@@ -1,0 +1,90 @@
+package day08;
+
+import java.util.Scanner;
+
+public class 과제 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		/* 야구게임
+		 * 컴퓨터가 3자리의 숫자를 랜덤으로 생성(1~9까지 한자리수만) => 3개의 숫자를 중복없이 생성
+		 * user가 3자리 숫자를 맞추는 게임
+		 * 자리와 숫자가 같이 일치하면 strike
+		 * 자리는 안 맞고 숫자만 일치하면 ball
+		 * 자리와 숫자 모두 맞지 않으면 out
+		 * 컴퓨터 : 3 5 7
+		 * 사용자 : 3 6 7 => 2스트라이크
+		 * 컴퓨터 : 3 5 7
+		 * 사용자 : 3 7 6 => 1스트라이크 1볼
+		 * 컴퓨터 : 3 5 7
+		 * 사용자 : 1 2 9 => 아웃
+		 * 
+		 * 정답을 맞추면 게임 종료
+		 * 
+		 * --야구게임 시작
+		 * 컴퓨터가 숫자를 정했습니다.
+		 * 숫자 입력(1~9까지 3자리) :
+		 * 입력 > 3 4 5 
+		 * 결과 > 3s
+		 * 3s 다 맞으면 종료(게임 횟수 출력)
+		 *   
+		 * */
+		
+	
+		
+
+	}
+	// 랜덤수를 생성하는 메서드
+	public static int random() {
+		return (int)(Math.random()*9)+1;
+	} 
+	// 랜덤수를 중복없이 배열에 저장하는 메서드
+	public static int[] comNum(int random) {
+		int[] arr=new int[3];
+		for(int i=0; i<arr.length; i++) {
+			for(int j=0; j<i; j++) {
+				if(arr[random]==arr[random]) {
+					i--;
+					break;
+				}
+			}
+		}
+		return arr;
+	}  
+	// 사용자의 숫자를 입력받아 배열에 저장하는 메서드
+	public static int[] userNum() {
+		System.out.println("숫자 3자리를 중복없이 입력해주세요.(1~9까지)");
+		Scanner scan=new Scanner(System.in);
+		int num1 = scan.nextInt();
+		int num2 = scan.nextInt();
+		int num3 = scan.nextInt();
+		int[] arr1=new int[3];
+		arr1[0]=num1;
+		arr1[1]=num2;
+		arr1[2]=num3;
+		
+		return arr1;
+	}
+	// 중복체크 메서드
+	public static boolean isContain(int arr[], int random) {
+		for(int tmp : arr) {
+			if(tmp==random) {
+				return true;
+			}
+		}
+		return false;
+	}	
+	public static int check(int arr[], int arr1[]) {
+		int cnt = 0; //당첨 개수 카운트
+		for(int i=0; i<arr.length; i++) { //lotto.length는 7번까지이므로 user.length까지만 비교해야함
+			if(isContain(arr[i], arr1[i])) {
+				cnt++;
+			}
+		}
+	}
+	
+			
+	
+
+}

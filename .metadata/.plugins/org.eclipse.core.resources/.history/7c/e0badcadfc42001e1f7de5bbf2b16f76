@@ -1,0 +1,83 @@
+package day08;
+
+public class Lotto풀이 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		int lotto[]=new int[7]; //당첨번호
+		int user[]=new int[6];
+		randomArray(user);
+		randomArray(lotto);
+		printArray(user);
+		printArray(lotto);
+		
+
+		
+		
+				
+
+	}
+	/* 1. 번호를 랜덤으로 생성(랜덤번호를 1개만 생성 후 리턴)
+	 * 	  1~45까지 랜덤번호를 생성한 후 리턴
+	 * */
+	
+	public static int random() {
+		return (int)(Math.random()*45)+1;
+	}
+	/* 2. 1번의 랜덤번호를 배열에 저장하는 기능
+	 * 배열을 완성 => 리턴x(void)
+	 * 매개변수 => 배열(로또배열, 유저배열)*/
+	
+	public static void randomArray(int arr[]) {
+		//중복 상관없이 채우기
+//		for(int i=0; i<arr.length; i++) {
+//			arr[i]=random();
+//		}
+		//중복없이 채우기
+//		for(int i=0; i<arr.length; i++) {
+//			int r=random();
+//			for(int j=0; j<=i; j++) {
+//			if(arr[j]!=r) {
+//				arr[i]=r;
+//			} else { //이미 배열에 해당 값이 있다면
+//				i--;
+//			}
+//		}
+//	}
+	int i=0;
+	while(i<arr.length) {
+		int r = random();
+		if(!isContain(arr,r)) {
+			arr[i]=r;
+			i++;
+		}
+	}
+	
+		
+	}
+	/* 3. 배열 출력 메서드
+	 * 배열을 주고, 출력*/
+	public static void printArray(int arr[]) {
+		for(int i=0; i<arr.length; i++) {
+			System.out.println(arr[i]+" ");
+		}
+		System.out.println();
+	}
+	/* 4. 중복체크 메서드
+	 * 중복이면 true, 중복이 아니면 false
+	 * 리턴타입 : boolean
+	 * 매개변수 : int arr[], random값
+	 * 메서드명 : isContain
+	 * */
+	public static boolean isContain(int arr[], int random) {
+		for(int tmp : arr) {
+			if(tmp==random) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+
+}
